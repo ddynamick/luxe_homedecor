@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Threadline Home — Pure Cotton Bedsheets</title>
+<meta name="description" content="Handpicked pure cotton bedsheets, pillow covers and home linen — woven for everyday comfort.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cotton:#FAF6EF;
+    --cotton-deep:#F1E9DC;
+    --ink:#20303D;
+    --ink-soft:#3C5163;
+    --gold:#B8874F;
+    --gold-deep:#93683A;
+    --blush:#E7D6C6;
+    --charcoal:#2B2620;
+    --weave-line:#CDBBA0;
+    --white:#FFFDF9;
+    --radius:2px;
+    --maxw:1180px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cotton);
+    color:var(--charcoal);
+    font-family:'Work Sans', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{
+    font-family:'Fraunces', serif;
+    color:var(--ink);
+    margin:0 0 .4em 0;
+    font-weight:600;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+  .eyebrow{
+    text-transform:uppercase;
+    letter-spacing:.18em;
+    font-size:12px;
+    color:var(--gold-deep);
+    font-weight:600;
+    margin-bottom:10px;
+    display:inline-block;
+  }
+
+  /* woven divider signature element */
+  .weave-divider{
+    height:14px;
+    width:100%;
+    background-image:
+      repeating-linear-gradient(90deg, var(--weave-line) 0 2px, transparent 2px 14px),
+      repeating-linear-gradient(0deg, var(--weave-line) 0 2px, transparent 2px 14px);
+    opacity:.55;
+  }
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(250,246,239,.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--weave-line);
+  }
+  .navbar{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 28px;max-width:var(--maxw);margin:0 auto;
+  }
+  .brand{
+    display:flex;align-items:baseline;gap:8px;
+    font-family:'Fraunces',serif;font-weight:700;font-size:22px;color:var(--ink);
+    text-decoration:none;
+  }
+  .brand span{color:var(--gold-deep);font-style:italic;font-weight:500;}
+  nav ul{list-style:none;display:flex;gap:28px;margin:0;padding:0;}
+  nav a{
+    text-decoration:none;font-size:14px;font-weight:600;color:var(--ink-soft);
+    letter-spacing:.02em;
+  }
+  nav a:hover{color:var(--gold-deep);}
+  .nav-insta{
+    display:inline-flex;align-items:center;gap:6px;
+    border:1px solid var(--ink);border-radius:20px;padding:6px 14px;
+    text-decoration:none;font-size:13px;font-weight:600;color:var(--ink);
+  }
+  .nav-insta:hover{background:var(--ink);color:var(--white);}
+  .navbar-right{display:flex;align-items:center;gap:24px;}
+  .menu-toggle{display:none;background:none;border:none;font-size:26px;cursor:pointer;color:var(--ink);}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:70px 0 60px;
+    background:
+      radial-gradient(circle at 85% 20%, var(--blush) 0%, transparent 45%),
+      var(--cotton);
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;
+  }
+  .hero h1{font-size:52px;line-height:1.06;}
+  .hero h1 em{font-style:italic;color:var(--gold-deep);}
+  .hero p.lead{font-size:17px;max-width:46ch;color:var(--ink-soft);margin-bottom:28px;}
+  .btn{
+    display:inline-block;padding:14px 30px;background:var(--ink);color:var(--white);
+    text-decoration:none;font-weight:600;font-size:14px;letter-spacing:.03em;
+    border-radius:var(--radius);border:1px solid var(--ink);cursor:pointer;
+  }
+  .btn:hover{background:var(--gold-deep);border-color:var(--gold-deep);}
+  .btn-outline{
+    background:transparent;color:var(--ink);border:1px solid var(--ink);margin-left:12px;
+  }
+  .btn-outline:hover{background:var(--ink);color:var(--white);}
+  .hero-image-frame{
+    position:relative;padding:14px;border:1px solid var(--weave-line);
+  }
+  .hero-image-frame::before{
+    content:"";position:absolute;inset:6px;border:1px solid var(--weave-line);pointer-events:none;
+  }
+  .placeholder-photo{
+    aspect-ratio:4/5;width:100%;
+    background:
+      repeating-linear-gradient(45deg, var(--cotton-deep) 0 10px, var(--white) 10px 20px);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:10px;color:var(--gold-deep);cursor:default;text-align:center;padding:20px;
+    position:relative;overflow:hidden;
+  }
+  .placeholder-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .placeholder-photo .ph-icon{font-size:30px;opacity:.6;}
+  .placeholder-photo .ph-label{font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;opacity:.75;}
+  .hero-stats{display:flex;gap:34px;margin-top:34px;}
+  .hero-stats div{border-left:2px solid var(--gold);padding-left:12px;}
+  .hero-stats strong{display:block;font-family:'Fraunces',serif;font-size:22px;color:var(--ink);}
+  .hero-stats span{font-size:12px;color:var(--ink-soft);}
+
+  /* ---------- SECTION HEADS ---------- */
+  section{padding:80px 0;}
+  .section-head{max-width:640px;margin-bottom:44px;}
+  .section-head h2{font-size:36px;}
+  .section-head p{color:var(--ink-soft);}
+
+  /* ---------- PRODUCTS ---------- */
+  #products{background:var(--white);}
+  .product-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:30px;
+  }
+  .product-card{
+    background:var(--cotton);border:1px solid var(--weave-line);
+    display:flex;flex-direction:column;position:relative;
+  }
+  .product-photo{
+    aspect-ratio:1/1;position:relative;overflow:hidden;
+    background:repeating-linear-gradient(45deg, var(--cotton-deep) 0 10px, var(--white) 10px 20px);
+    cursor:pointer;
+  }
+  .product-photo img{width:100%;height:100%;object-fit:cover;}
+  .product-photo .ph-icon{font-size:26px;color:var(--gold-deep);opacity:.55;}
+  .product-photo .ph-fallback{
+    position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+  }
+  .ph-fallback .ph-label{font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--gold-deep);opacity:.7;}
+  .tc-badge{
+    position:absolute;top:10px;left:10px;background:var(--ink);color:var(--white);
+    font-size:11px;font-weight:600;letter-spacing:.04em;padding:5px 10px;
+    border-radius:14px;z-index:2;
+  }
+  .product-body{padding:20px 20px 22px;display:flex;flex-direction:column;gap:8px;flex:1;}
+  .product-body h3{font-size:19px;margin-bottom:0;}
+  .product-body .size{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--gold-deep);font-weight:600;}
+  .product-body .desc{font-size:14px;color:var(--ink-soft);flex:1;}
+  .product-footer{display:flex;align-items:center;justify-content:space-between;margin-top:10px;}
+  .price{font-family:'Fraunces',serif;font-weight:600;font-size:20px;color:var(--ink);}
+  .enquire-btn{
+    font-size:13px;font-weight:600;text-decoration:none;color:var(--ink);
+    border-bottom:1px solid var(--ink);padding-bottom:1px;
+  }
+  .enquire-btn:hover{color:var(--gold-deep);border-color:var(--gold-deep);}
+  .remove-card-btn{
+    display:none;position:absolute;top:10px;right:10px;z-index:3;
+    width:26px;height:26px;border-radius:50%;background:#c0392b;color:#fff;
+    border:none;cursor:pointer;font-size:14px;line-height:1;
+  }
+  .add-card{
+    display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;
+    border:2px dashed var(--weave-line);cursor:pointer;color:var(--ink-soft);
+    min-height:260px;display:none;
+  }
+
+  /* ---------- ABOUT ---------- */
+  #about{background:var(--cotton);}
+  .about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:center;}
+  .about-photo{aspect-ratio:4/5;border:1px solid var(--weave-line);padding:12px;}
+  .about-text p{color:var(--ink-soft);margin-bottom:16px;}
+  .about-list{list-style:none;padding:0;margin:26px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .about-list li{font-size:14px;padding-left:20px;position:relative;color:var(--ink-soft);}
+  .about-list li::before{content:"—";position:absolute;left:0;color:var(--gold-deep);}
+
+  /* ---------- CONTACT ---------- */
+  #contact{background:var(--white);}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;}
+  .contact-info-item{margin-bottom:22px;}
+  .contact-info-item .label{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--gold-deep);font-weight:600;margin-bottom:4px;}
+  .contact-info-item a, .contact-info-item div.value{font-size:16px;color:var(--ink);text-decoration:none;}
+  .social-row{display:flex;gap:14px;margin-top:26px;}
+  .social-btn{
+    display:inline-flex;align-items:center;gap:8px;padding:10px 18px;
+    border:1px solid var(--ink);text-decoration:none;font-size:13px;font-weight:600;color:var(--ink);
+  }
+  .social-btn:hover{background:var(--ink);color:var(--white);}
+  form.contact-form{display:flex;flex-direction:column;gap:14px;}
+  form.contact-form input, form.contact-form textarea{
+    padding:13px 14px;border:1px solid var(--weave-line);background:var(--cotton);
+    font-family:'Work Sans',sans-serif;font-size:14px;color:var(--charcoal);border-radius:var(--radius);
+  }
+  form.contact-form textarea{min-height:110px;resize:vertical;}
+  form.contact-form label{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-soft);font-weight:600;}
+  .form-note{font-size:12px;color:var(--ink-soft);margin-top:4px;}
+
+  /* ---------- LEGAL ---------- */
+  .legal-section{background:var(--cotton-deep);}
+  .legal-section h2{font-size:30px;}
+  .legal-block{margin-bottom:26px;}
+  .legal-block h4{font-size:16px;margin-bottom:6px;color:var(--ink);}
+  .legal-block p, .legal-block li{font-size:14px;color:var(--ink-soft);}
+  .legal-columns{display:grid;grid-template-columns:1fr 1fr;gap:56px;}
+  .legal-updated{font-size:12px;color:var(--gold-deep);font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-bottom:20px;display:block;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--ink);color:var(--cotton);padding:50px 0 26px;}
+  .footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:40px;margin-bottom:34px;}
+  footer h4{color:var(--cotton);font-size:14px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px;}
+  footer p{color:#B9C4CC;font-size:14px;}
+  footer ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;}
+  footer a{color:#D8DFE3;text-decoration:none;font-size:14px;}
+  footer a:hover{color:var(--gold);}
+  .footer-bottom{
+    border-top:1px solid rgba(255,255,255,.15);padding-top:20px;
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;
+    font-size:12px;color:#9AA7AF;
+  }
+
+  /* ---------- EDIT MODE ---------- */
+  [contenteditable="true"]{outline:1px dashed var(--gold);outline-offset:3px;cursor:text;}
+  [contenteditable="true"]:hover{outline:1px dashed var(--gold-deep);}
+  body.edit-mode .product-photo::after{
+    content:"Click photo to replace";
+    position:absolute;inset:auto 0 0 0;background:rgba(32,48,61,.82);color:#fff;
+    font-size:11px;text-align:center;padding:5px 0;
+  }
+  body.edit-mode .remove-card-btn{display:block;}
+  body.edit-mode .add-card{display:flex;}
+  body.edit-mode .hero-image-frame .placeholder-photo::after{
+    content:"Click to replace photo";position:absolute;bottom:0;left:0;right:0;
+    background:rgba(32,48,61,.82);color:#fff;font-size:11px;text-align:center;padding:6px 0;
+  }
+  body.edit-mode .about-photo .placeholder-photo::after{
+    content:"Click to replace photo";position:absolute;bottom:0;left:0;right:0;
+    background:rgba(32,48,61,.82);color:#fff;font-size:11px;text-align:center;padding:6px 0;
+  }
+  .editbar{
+    position:fixed;bottom:22px;right:22px;z-index:200;
+    display:flex;flex-direction:column;align-items:flex-end;gap:10px;
+  }
+  .editbar-toggle{
+    background:var(--ink);color:#fff;border:none;padding:14px 20px;border-radius:30px;
+    font-weight:600;font-size:14px;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.25);
+  }
+  .editbar-toggle:hover{background:var(--gold-deep);}
+  .editbar-panel{
+    display:none;background:#fff;border:1px solid var(--weave-line);border-radius:10px;
+    padding:14px;width:230px;box-shadow:0 10px 30px rgba(0,0,0,.15);
+  }
+  .editbar-panel.show{display:block;}
+  .editbar-panel p{font-size:12px;color:var(--ink-soft);margin:0 0 10px;}
+  .editbar-panel button{
+    width:100%;padding:10px;margin-bottom:8px;border:1px solid var(--ink);background:#fff;
+    border-radius:6px;cursor:pointer;font-size:13px;font-weight:600;color:var(--ink);
+  }
+  .editbar-panel button.primary{background:var(--ink);color:#fff;}
+  .editbar-panel button:hover{opacity:.85;}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:900px){
+    nav ul{position:fixed;top:66px;left:0;right:0;background:var(--cotton);flex-direction:column;
+      padding:20px 28px;border-bottom:1px solid var(--weave-line);gap:16px;display:none;}
+    nav ul.show{display:flex;}
+    .menu-toggle{display:block;}
+    .nav-insta{display:none;}
+    .hero-grid,.about-grid,.contact-grid,.legal-columns{grid-template-columns:1fr;}
+    .hero h1{font-size:38px;}
+    .product-grid{grid-template-columns:repeat(2,1fr);}
+    .footer-grid{grid-template-columns:1fr;}
+  }
+  @media (max-width:560px){
+    .product-grid{grid-template-columns:1fr;}
+    .hero-stats{flex-wrap:wrap;row-gap:16px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="navbar">
+    <a href="#home" class="brand" data-editable="text">Threadline<span>Home</span></a>
+    <div class="navbar-right">
+      <nav>
+        <ul id="navList">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#terms">Terms</a></li>
+          <li><a href="#privacy">Privacy</a></li>
+        </ul>
+      </nav>
+      <a href="https://instagram.com/yourhandle" target="_blank" rel="noopener" class="nav-insta" id="instaLinkTop">
+        <span>&#9737;</span> <span id="instaHandleTop">@yourhandle</span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu">&#9776;</button>
+    </div>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section id="home" class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow" data-editable="text">100% Pure Cotton · Made For Everyday</span>
+      <h1 data-editable="text">Bedsheets woven for <em>quiet, honest comfort.</em></h1>
+      <p class="lead" data-editable="text">Handpicked pure-cotton bedsheets, pillow covers and home linen — sourced with care and finished soft, so every night feels like the first wash.</p>
+      <div>
+        <a href="#products" class="btn">Shop the Collection</a>
+        <a href="#contact" class="btn btn-outline">Get in Touch</a>
+      </div>
+      <div class="hero-stats">
+        <div><strong data-editable="text">300–400</strong><span>Thread Count Range</span></div>
+        <div><strong data-editable="text">100%</strong><span>Pure Cotton</span></div>
+        <div><strong data-editable="text">5,000+</strong><span>Happy Sleepers</span></div>
+      </div>
+    </div>
+    <div class="hero-image-frame">
+      <div class="placeholder-photo editable-photo" id="heroPhoto">
+        <img style="display:none;" alt="Featured bedsheet">
+        <span class="ph-icon">&#128247;</span>
+        <span class="ph-label">Click "Edit Site" below,<br>then click here to add your photo</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="weave-divider"></div>
+
+<!-- ================= PRODUCTS ================= -->
+<section id="products">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow" data-editable="text">The Collection</span>
+      <h2 data-editable="text">Bedsheets &amp; more, made simple</h2>
+      <p data-editable="text">Every piece below is a placeholder — switch on Edit Mode to upload your own photos, prices and descriptions before you publish.</p>
+    </div>
+    <div class="product-grid" id="productGrid">
+      <!-- product cards injected by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- product card template (hidden) -->
+<template id="productCardTemplate">
+  <div class="product-card">
+    <button class="remove-card-btn" title="Remove product">&times;</button>
+    <div class="product-photo editable-photo">
+      <span class="tc-badge" data-editable="text">300 TC</span>
+      <img style="display:none;" alt="Product photo">
+      <div class="ph-fallback">
+        <span class="ph-icon">&#128247;</span>
+        <span class="ph-label">Add photo</span>
+      </div>
+    </div>
+    <div class="product-body">
+      <h3 data-editable="text">Product Name</h3>
+      <span class="size" data-editable="text">Queen Size · 90x100 in</span>
+      <p class="desc" data-editable="text">Short description of the fabric, feel and what makes it special.</p>
+      <div class="product-footer">
+        <span class="price" data-editable="text">₹1,499</span>
+        <a href="#contact" class="enquire-btn">Enquire →</a>
+      </div>
+    </div>
+  </div>
+</template>
+
+<div class="weave-divider"></div>
+
+<!-- ================= ABOUT ================= -->
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="about-photo">
+      <div class="placeholder-photo editable-photo" id="aboutPhoto">
+        <img style="display:none;" alt="About us photo">
+        <span class="ph-icon">&#128247;</span>
+        <span class="ph-label">Add a photo of your<br>workspace or fabric</span>
+      </div>
+    </div>
+    <div class="about-text">
+      <span class="eyebrow" data-editable="text">About Us</span>
+      <h2 data-editable="text">A small home-linen business, run with care</h2>
+      <p data-editable="text">Threadline Home started as a simple idea: everyone deserves a bedsheet that actually feels good against the skin, without paying showroom prices for it. We work directly with cotton mills and small weaving units, checking every batch for weave quality, softness and colourfastness before it reaches you.</p>
+      <p data-editable="text">Every order is packed by hand and shipped with the same care we'd want for our own home. No middlemen, no unnecessary markup — just honest cotton, honestly priced.</p>
+      <ul class="about-list">
+        <li data-editable="text">100% pure cotton, no synthetic blends</li>
+        <li data-editable="text">Pre-shrunk &amp; colourfast fabric</li>
+        <li data-editable="text">Direct from source, fair pricing</li>
+        <li data-editable="text">Pan-India shipping</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="weave-divider"></div>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <span class="eyebrow" data-editable="text">Contact Us</span>
+      <h2 data-editable="text">Let's talk cotton</h2>
+      <p data-editable="text" style="color:var(--ink-soft);margin-bottom:26px;">Have a question about sizes, bulk orders, or custom prints? Reach out — we usually reply within a day.</p>
+
+      <div class="contact-info-item">
+        <div class="label">Email</div>
+        <a href="mailto:hello@yourstore.com" id="emailLink" data-editable="text">hello@yourstore.com</a>
+      </div>
+      <div class="contact-info-item">
+        <div class="label">Phone / WhatsApp</div>
+        <a href="tel:+911234567890" id="phoneLink" data-editable="text">+91 12345 67890</a>
+      </div>
+      <div class="contact-info-item">
+        <div class="label">Studio / Dispatch Address</div>
+        <div class="value" data-editable="text">Ahmedabad, Gujarat, India</div>
+      </div>
+
+      <div class="social-row">
+        <a href="https://instagram.com/yourhandle" target="_blank" rel="noopener" class="social-btn" id="instaLinkBottom">Instagram ↗</a>
+        <a href="https://wa.me/911234567890" target="_blank" rel="noopener" class="social-btn">WhatsApp ↗</a>
+      </div>
+    </div>
+
+    <div>
+      <form class="contact-form" id="contactForm">
+        <div>
+          <label for="cf-name">Name</label>
+          <input id="cf-name" name="name" type="text" placeholder="Your name" required>
+        </div>
+        <div>
+          <label for="cf-email">Email</label>
+          <input id="cf-email" name="email" type="email" placeholder="you@email.com" required>
+        </div>
+        <div>
+          <label for="cf-message">Message</label>
+          <textarea id="cf-message" name="message" placeholder="Tell us what you're looking for..." required></textarea>
+        </div>
+        <button type="submit" class="btn" style="align-self:flex-start;">Send Message</button>
+        <p class="form-note">This form opens your email app with the message pre-filled — this page has no backend server. To collect messages directly on the page, connect a form service such as Formspree or Getform and update the form's action.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<div class="weave-divider"></div>
+
+<!-- ================= TERMS & CONDITIONS ================= -->
+<section id="terms" class="legal-section">
+  <div class="wrap">
+    <span class="eyebrow" data-editable="text">Legal</span>
+    <h2 data-editable="text">Terms &amp; Conditions</h2>
+    <span class="legal-updated">Last updated: [Add date before publishing]</span>
+    <div class="legal-columns">
+      <div>
+        <div class="legal-block">
+          <h4>1. About These Terms</h4>
+          <p data-editable="text">By browsing this website or placing an order with Threadline Home ("we", "us", "our"), you agree to the terms below. Please read them before shopping. If you don't agree, kindly refrain from using this site.</p>
+        </div>
+        <div class="legal-block">
+          <h4>2. Products &amp; Pricing</h4>
+          <p data-editable="text">All bedsheets and linen products are described and priced to the best of our ability. Colours may vary slightly from screen to screen due to display settings. Prices are listed in Indian Rupees (₹) and are subject to change without prior notice; the price at the time of order confirmation applies.</p>
+        </div>
+        <div class="legal-block">
+          <h4>3. Orders &amp; Payment</h4>
+          <p data-editable="text">An order is confirmed only after payment is received in full, unless Cash on Delivery is explicitly offered. We reserve the right to cancel any order due to stock unavailability, pricing errors, or suspected fraud, in which case a full refund will be issued.</p>
+        </div>
+        <div class="legal-block">
+          <h4>4. Shipping &amp; Delivery</h4>
+          <p data-editable="text">Orders are typically dispatched within [X] business days and delivered within [X–X] business days depending on location. Delivery timelines are estimates and may be affected by courier delays outside our control.</p>
+        </div>
+      </div>
+      <div>
+        <div class="legal-block">
+          <h4>5. Returns, Exchanges &amp; Refunds</h4>
+          <p data-editable="text">If a product arrives damaged, defective, or different from what was ordered, please contact us within [X] days of delivery with photos of the item and packaging. Approved returns will be exchanged or refunded to the original payment method. Products used, washed, or without original packaging may not be eligible for return.</p>
+        </div>
+        <div class="legal-block">
+          <h4>6. Product Care</h4>
+          <p data-editable="text">Cotton bedsheets should be washed as per the care label — generally cold to warm water, mild detergent, and dried in shade to preserve colour and fabric life. We are not responsible for damage caused by improper washing or care.</p>
+        </div>
+        <div class="legal-block">
+          <h4>7. Limitation of Liability</h4>
+          <p data-editable="text">We are not liable for any indirect or incidental loss arising from the use of our products or this website. Our total liability, in any case, is limited to the value of the order placed.</p>
+        </div>
+        <div class="legal-block">
+          <h4>8. Governing Law</h4>
+          <p data-editable="text">These terms are governed by the laws of India, and any disputes will be subject to the jurisdiction of the courts in Ahmedabad, Gujarat.</p>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:12px;color:var(--ink-soft);margin-top:20px;">Note: this is starter template text, not legal advice. Please review and customise it — ideally with a professional — before publishing your store.</p>
+  </div>
+</section>
+
+<div class="weave-divider"></div>
+
+<!-- ================= PRIVACY POLICY ================= -->
+<section id="privacy" class="legal-section" style="background:var(--cotton);">
+  <div class="wrap">
+    <span class="eyebrow" data-editable="text">Legal</span>
+    <h2 data-editable="text">Privacy Policy</h2>
+    <span class="legal-updated">Last updated: [Add date before publishing]</span>
+    <div class="legal-columns">
+      <div>
+        <div class="legal-block">
+          <h4>1. Information We Collect</h4>
+          <p data-editable="text">When you place an order, contact us, or browse this site, we may collect information such as your name, email address, phone number, shipping address, and order details. We do not collect payment card details directly — these are handled securely by our payment provider.</p>
+        </div>
+        <div class="legal-block">
+          <h4>2. How We Use Your Information</h4>
+          <p data-editable="text">We use your information to process and deliver orders, respond to enquiries, send order updates, and — only with your consent — share occasional offers or new arrivals. We do not sell or rent your personal information to third parties.</p>
+        </div>
+        <div class="legal-block">
+          <h4>3. Cookies</h4>
+          <p data-editable="text">This website may use basic cookies or local storage to remember preferences and improve your browsing experience. You can disable cookies through your browser settings at any time.</p>
+        </div>
+      </div>
+      <div>
+        <div class="legal-block">
+          <h4>4. Sharing With Third Parties</h4>
+          <p data-editable="text">We may share order details with trusted third parties strictly for order fulfilment — such as courier and payment gateway partners — solely for the purpose of completing your purchase.</p>
+        </div>
+        <div class="legal-block">
+          <h4>5. Data Security</h4>
+          <p data-editable="text">We take reasonable measures to protect your personal information, but no method of transmission over the internet is 100% secure, and we cannot guarantee absolute security.</p>
+        </div>
+        <div class="legal-block">
+          <h4>6. Your Rights</h4>
+          <p data-editable="text">You may request access to, correction of, or deletion of your personal data at any time by contacting us using the details in the Contact section above.</p>
+        </div>
+        <div class="legal-block">
+          <h4>7. Changes to This Policy</h4>
+          <p data-editable="text">We may update this policy from time to time. Changes will be posted on this page with a revised "last updated" date.</p>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:12px;color:var(--ink-soft);margin-top:20px;">Note: this is starter template text, not legal advice. Please review and customise it — ideally with a professional — before publishing your store.</p>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h4 data-editable="text">Threadline Home</h4>
+        <p data-editable="text">Pure cotton bedsheets, pillow covers and home linen — woven for everyday comfort, priced honestly.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal &amp; Social</h4>
+        <ul>
+          <li><a href="#terms">Terms &amp; Conditions</a></li>
+          <li><a href="#privacy">Privacy Policy</a></li>
+          <li><a href="https://instagram.com/yourhandle" target="_blank" rel="noopener" id="instaLinkFooter">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span data-editable="text">© 2026 Threadline Home. All rights reserved.</span>
+      <span>Built with care in Gujarat, India.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= EDIT MODE CONTROLS ================= -->
+<div class="editbar">
+  <div class="editbar-panel" id="editPanel">
+    <p><strong>Edit Mode is ON.</strong><br>Click any text to type over it. Click any photo box to upload from your device. Changes auto-save in this browser.</p>
+    <button class="primary" id="downloadBtn">⬇ Download Updated Site</button>
+    <button id="resetBtn">↺ Reset All Edits</button>
+  </div>
+  <button class="editbar-toggle" id="editToggle">✎ Edit Site</button>
+</div>
+<input type="file" accept="image/*" id="hiddenFileInput" style="display:none;">
+
+<script>
+(function(){
+  const STORAGE_KEY = "threadline_site_data_v1";
+  let editMode = false;
+  let activePhotoTarget = null;
+
+  const defaultProducts = [
+    {tc:"300 TC", name:"Royal Comfort Cotton Bedsheet", size:"Queen Size · 90x100 in", desc:"Soft sateen-weave cotton with a smooth, breathable finish — ideal for year-round comfort.", price:"₹1,499", img:""},
+    {tc:"400 TC", name:"Pure Weave Cotton Bedsheet", size:"King Size · 108x108 in", desc:"Dense long-staple cotton weave that gets softer with every wash.", price:"₹1,899", img:""},
+    {tc:"280 TC", name:"Sundara Stripe Bedsheet Set", size:"Double Bed · 90x100 in + 2 pillow covers", desc:"Classic woven stripes in a durable everyday cotton blend, set of 3 pieces.", price:"₹1,299", img:""},
+    {tc:"300 TC", name:"Cloud Soft Pillow Covers (Pair)", size:"Standard · 17x27 in", desc:"Matching pillow covers with a hidden zip closure, sold as a pair.", price:"₹499", img:""},
+    {tc:"320 TC", name:"Heritage Block-Print Bedsheet", size:"Queen Size · 90x100 in", desc:"Hand block-printed motifs on pure cotton, inspired by traditional Gujarati textile art.", price:"₹1,699", img:""},
+    {tc:"250 TC", name:"Everyday Essentials Bedsheet", size:"Single Bed · 60x90 in", desc:"A no-fuss, budget-friendly cotton sheet for hostels, guest rooms and daily use.", price:"₹999", img:""}
+  ];
+
+  const grid = document.getElementById('productGrid');
+  const tpl = document.getElementById('productCardTemplate');
+
+  function buildCard(data){
+    const node = tpl.content.cloneNode(true);
+    const card = node.querySelector('.product-card');
+    card.querySelector('.tc-badge').textContent = data.tc;
+    card.querySelector('h3').textContent = data.name;
+    card.querySelector('.size').textContent = data.size;
+    card.querySelector('.desc').textContent = data.desc;
+    card.querySelector('.price').textContent = data.price;
+    if(data.img){
+      const img = card.querySelector('.product-photo img');
+      img.src = data.img;
+      img.style.display = 'block';
+      card.querySelector('.ph-fallback').style.display = 'none';
+    }
+    card.querySelector('.remove-card-btn').addEventListener('click', function(){
+      card.remove();
+      autoSave();
+    });
+    card.querySelector('.product-photo').addEventListener('click', function(){
+      if(!editMode) return;
+      activePhotoTarget = this;
+      document.getElementById('hiddenFileInput').click();
+    });
+    return card;
+  }
+
+  function renderProducts(list){
+    grid.innerHTML = '';
+    list.forEach(p => grid.appendChild(buildCard(p)));
+    const addCard = document.createElement('div');
+    addCard.className = 'product-card add-card';
+    addCard.innerHTML = '<span style="font-size:26px;">+</span><span>Add Product</span>';
+    addCard.addEventListener('click', function(){
+      grid.insertBefore(buildCard({tc:"300 TC", name:"New Product", size:"Size · Dimensions", desc:"Describe this product.", price:"₹0", img:""}), addCard);
+      autoSave();
+    });
+    grid.appendChild(addCard);
+  }
+
+  renderProducts(defaultProducts);
+
+  // ---- generic photo click bindings for hero/about ----
+  ['heroPhoto','aboutPhoto'].forEach(id => {
+    document.getElementById(id).addEventListener('click', function(){
+      if(!editMode) return;
+      activePhotoTarget = this;
+      document.getElementById('hiddenFileInput').click();
+    });
+  });
+
+  document.getElementById('hiddenFileInput').addEventListener('change', function(e){
+    const file = e.target.files[0];
+    if(!file || !activePhotoTarget) return;
+    const reader = new FileReader();
+    reader.onload = function(ev){
+      const img = activePhotoTarget.querySelector('img');
+      img.src = ev.target.result;
+      img.style.display = 'block';
+      const icon = activePhotoTarget.querySelector('.ph-icon');
+      const label = activePhotoTarget.querySelector('.ph-label');
+      const fallback = activePhotoTarget.querySelector('.ph-fallback');
+      if(icon) icon.style.display = 'none';
+      if(label) label.style.display = 'none';
+      if(fallback) fallback.style.display = 'none';
+      autoSave();
+    };
+    reader.readAsDataURL(file);
+    e.target.value = '';
+  });
+
+  // ---- edit mode toggle ----
+  const editToggle = document.getElementById('editToggle');
+  const editPanel = document.getElementById('editPanel');
+
+  editToggle.addEventListener('click', function(){
+    editMode = !editMode;
+    document.body.classList.toggle('edit-mode', editMode);
+    editPanel.classList.toggle('show', editMode);
+    editToggle.textContent = editMode ? '✓ Editing — Click to Finish' : '✎ Edit Site';
+    document.querySelectorAll('[data-editable="text"]').forEach(el => {
+      el.contentEditable = editMode ? 'true' : 'false';
+    });
+    document.querySelectorAll('.product-body [data-editable]').forEach(el => {
+      el.contentEditable = editMode ? 'true' : 'false';
+    });
+  });
+
+  document.body.addEventListener('input', function(e){
+    if(e.target && e.target.isContentEditable){
+      autoSave();
+    }
+  });
+
+  document.getElementById('downloadBtn').addEventListener('click', function(){
+    editMode = false;
+    document.body.classList.remove('edit-mode');
+    editPanel.classList.remove('show');
+    editToggle.textContent = '✎ Edit Site';
+    document.querySelectorAll('[contenteditable="true"]').forEach(el => el.contentEditable = 'false');
+    const html = '<!DOCTYPE html>\\n' + document.documentElement.outerHTML;
+    const blob = new Blob([html], {type:'text/html'});
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'index.html';
+    link.click();
+  });
+
+  document.getElementById('resetBtn').addEventListener('click', function(){
+    if(confirm('Reset all edits and reload the original template?')){
+      localStorage.removeItem(STORAGE_KEY);
+      location.reload();
+    }
+  });
+
+  function autoSave(){
+    try{
+      localStorage.setItem(STORAGE_KEY, document.documentElement.outerHTML);
+    }catch(err){
+      console.warn('Could not autosave (storage may be full):', err);
+    }
+  }
+
+  // ---- mobile menu ----
+  document.getElementById('menuToggle').addEventListener('click', function(){
+    document.getElementById('navList').classList.toggle('show');
+  });
+  document.querySelectorAll('#navList a').forEach(a => {
+    a.addEventListener('click', () => document.getElementById('navList').classList.remove('show'));
+  });
+
+  // ---- contact form -> mailto ----
+  document.getElementById('contactForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const name = document.getElementById('cf-name').value;
+    const email = document.getElementById('cf-email').value;
+    const message = document.getElementById('cf-message').value;
+    const to = document.getElementById('emailLink').textContent.trim();
+    const subject = encodeURIComponent('Enquiry from ' + name);
+    const body = encodeURIComponent(message + '\\n\\nFrom: ' + name + ' (' + email + ')');
+    window.location.href = 'mailto:' + to + '?subject=' + subject + '&body=' + body;
+  });
+})();
+</script>
+
+</body>
+</html>
